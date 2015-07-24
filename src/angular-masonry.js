@@ -65,7 +65,7 @@
             // Keep track of added elements.
             bricks[id] = true;
             defaultLoaded(element);
-            if ($scope.isPrepended) {
+            if ($element.data('is-prepended')) {
                 $element.masonry('prepended', element, true);
             } else {
                 $element.masonry('appended', element, true);
@@ -127,9 +127,6 @@
       return {
         restrict: 'AE',
         controller: 'MasonryCtrl',
-        scope: {
-          isPrepended: '='
-        },
         link: {
           pre: function preLink(scope, element, attrs, ctrl) {
             var attrOptions = scope.$eval(attrs.masonry || attrs.masonryOptions);
@@ -162,14 +159,11 @@
       return {
         restrict: 'AC',
         require: '^masonry',
-        scope: {
-          initialStyle: '='
-        },
         link: {
           pre: function preLink(scope, element, attrs, ctrl) {
             var id = scope.$id, index;
 
-            element.css(scope.initialStyle);
+            element.css('opacity', 0);
             ctrl.appendBrick(element, id);
             element.on('$destroy', function () {
               ctrl.removeBrick(id, element);
