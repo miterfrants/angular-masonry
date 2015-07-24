@@ -1,5 +1,5 @@
 {
-    "name": "angular-masonry-in-hahow",
+    "name": "angular-masonry-hahow",
     "description": "An AngularJS directive for Masonry.",
     "version": "0.11.1",
     "main": "./angular-masonry.js",
